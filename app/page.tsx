@@ -35,7 +35,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-8 mb-20">
             <div className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full mb-4">
-              Welcome to Stray Dog Directory
+              Welcome to Stray Dog Directory - v1.0.0
             </div>
             <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-zinc-100 dark:via-zinc-300 dark:to-zinc-100">
