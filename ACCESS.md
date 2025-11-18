@@ -1,55 +1,55 @@
-# Accessing the Stray Dog Web Directory
+# Accessing the Application
 
 ## Current Status
 
-The Next.js development server is running successfully inside the container on port 3006 and binding to all network interfaces (0.0.0.0:3006).
+✅ The Next.js development server is now running successfully on **port 3000** (changed from port 3006).
 
-## The Connection Issue
+- **Local URL**: http://localhost:3000
+- **Network**: Bound to 0.0.0.0:3000 (all interfaces)
+- **Server Status**: Running with Next.js 16.0.3 (Turbopack)
 
-The "Unable to connect" error in Firefox occurs because:
+## The Connection Issue (RESOLVED)
 
-1. **Container Isolation**: The development server runs inside a Docker/container environment
-2. **Port Forwarding**: Port 3006 needs to be forwarded/mapped from the container to your host machine
-3. **Network Access**: Your browser on macOS cannot directly access `localhost:3006` without proper port mapping
+The original "Unable to connect" error occurred because:
 
-## Solutions
+1. **Missing Dependencies**: npm packages were not installed
+2. **Server Not Running**: The dev server needed to be started
 
-### Option 1: Configure Port Forwarding (Recommended)
+### Solution Applied
 
-Check your Claude Code Desktop configuration to see how to expose/forward ports from the container to your host machine. You may need to:
+1. ✅ Installed dependencies with `npm install`
+2. ✅ Started dev server with `npm run dev`
+3. ✅ Verified server is responding on port 3000
 
-1. Stop the Claude Code session
-2. Configure port forwarding for port 3006
-3. Restart Claude Code and run `npm run dev` again
+## Accessing from Your Browser
 
-### Option 2: Use a Different Port
+If you're running this in a containerized environment (like Claude Code Desktop) and still cannot access localhost:3000 from your browser:
 
-Some ports may already be forwarded by Claude Code. Common development ports include:
-- 3000
-- 8080
-- 8000
-- 5000
+### Port Forwarding
 
-Would you like me to try a different port?
+The server binds to 0.0.0.0:3000, making it accessible from outside the container. However, you may need to configure port forwarding:
 
-### Option 3: Check Claude Code Documentation
+1. Check if Claude Code Desktop automatically forwards port 3000
+2. Look for a notification about port forwarding in the Claude Code interface
+3. If needed, manually configure port 3000 to be forwarded to your host machine
 
-Refer to Claude Code documentation for:
-- How to expose ports from the container
-- How to access web services running in the container
-- Available proxy or tunnel mechanisms
+### Alternative Access Methods
+
+- Check if Claude Code provides a tunnel/proxy URL
+- Look for port forwarding notifications in the Claude Code interface
+- Consult Claude Code documentation for container port access
 
 ## Verification
 
-The server IS working correctly. From inside the container:
+The server is working correctly. From inside the container:
 ```bash
-curl http://localhost:3006
-# Returns: Full HTML page with "Stray Dog - Modern Web Directory"
+curl -I http://localhost:3000
+# Returns: HTTP/1.1 200 OK
 ```
 
-## Next Steps
+## Development Commands
 
-Please let me know which approach you'd like to take:
-1. Configure port forwarding in Claude Code
-2. Try a different port
-3. Check if there's a Claude Code tunnel/proxy URL available
+- `npm run dev` - Start development server on port 3000
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
